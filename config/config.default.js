@@ -18,6 +18,10 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
 
+  config.multipart = {
+    mode: 'file',
+  };
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
@@ -29,16 +33,16 @@ module.exports = appInfo => {
     security: {
       csrf: {
         enable: false,
-      }
+      },
     },
     mongoose: {
       client: {
         url: 'mongodb://127.0.0.1:27017/blog',
-        options: {}
-      }
+        options: {},
+      },
     },
     jwt: {
-      secret: 'blog'
-    }
+      secret: 'blog',
+    },
   };
 };
