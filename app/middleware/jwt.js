@@ -1,6 +1,7 @@
 // eslint-disable-next-line strict
 module.exports = ({ app }) => {
   return async function verify(ctx, next) {
+    console.log(ctx.session);
     const token = ctx.request.header.authorization.replace('Bearer ', '');
     try {
       const res = await app.jwt.verify(token, app.config.jwt.secret);

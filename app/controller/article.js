@@ -57,6 +57,18 @@ class ArticleController extends BaseController {
       this.error(error);
     }
   }
+  // 获取文章上下两篇文章
+  async recentRecord() {
+    const { ctx } = this;
+    const { id } = ctx.query;
+    try {
+      const prev = await ctx.model.Article.find({ _id: { $lt: id } }).sort({ _id: -1 }).limit(1);
+      const next = await ctx.model.Article.find({ _id: { $gt: id } }).sort({ _id: 1 }).limit(1);
+      this.success({ prev: prev[0], next: next[0] });
+    } catch (error) {
+      this.error(error);
+    }
+  }
 }
 
 module.exports = ArticleController;
