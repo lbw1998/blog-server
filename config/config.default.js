@@ -16,8 +16,11 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1605273297334_8827';
 
   // add your middleware config here
-  config.middleware = [];
-
+  config.middleware = [ 'errorHandler' ];
+  // 只对 /api 前缀的 url 路径生效
+  config.errorHandler = {
+    match: '/api',
+  };
   config.multipart = {
     mode: 'file',
   };

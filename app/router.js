@@ -12,12 +12,14 @@ module.exports = app => {
   const { login } = controller.user;
   router.post('/user/login', login);
 
+  // 管理员接口(带token)
   // 类型
   router.resources('type', '/types', jwt, controller.type);
   // 文件上传
   router.resources('file', '/files', controller.file);
   // 文章
   router.resources('article', '/articles', jwt, controller.article);
+
   // 游客(无token)查看列表
   router.get('/type/list', controller.type.index);
   router.get('/type/articles', controller.type.articles);
@@ -29,6 +31,9 @@ module.exports = app => {
   router.get('/comment/index', controller.comment.index);
   router.get('/comment/getInfo', controller.comment.getInfo);
   router.post('/comment/create', controller.comment.create);
+  // 留言
+  router.get('/message/index', controller.message.index);
+  router.post('/message/create', controller.message.create);
   // const { add, delType, upload, getList } = controller.type;
   // router.post('/type/add', jwt, add);
   // // router.delete('/type/delType', jwt, delType);

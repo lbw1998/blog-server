@@ -11,13 +11,9 @@ class TypeController extends BaseController {
   async articles() {
     const { ctx } = this;
     const { typeName } = ctx.query;
-    try {
-      const type = await ctx.model.Type.findOne({ typeName });
-      const list = await ctx.model.Article.find({ type: type._id }).sort({ _id: -1 });
-      this.success(list);
-    } catch (error) {
-      this.error(error);
-    }
+    const type = await ctx.model.Type.findOne({ typeName });
+    const list = await ctx.model.Article.find({ type: type._id }).sort({ _id: -1 });
+    this.success(list);
   }
   async create() {
     const { ctx } = this;

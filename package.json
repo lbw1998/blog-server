@@ -12,7 +12,8 @@
     "egg-mongoose": "^3.3.1",
     "egg-scripts": "^2.11.0",
     "iconv-lite": "^0.6.2",
-    "md5": "^2.3.0"
+    "md5": "^2.3.0",
+    "nodemailer": "^6.4.16"
   },
   "devDependencies": {
     "autod": "^3.0.1",

@@ -7,7 +7,6 @@ class UserController extends BaseController {
   // 登陆
   async login() {
     const { ctx, app } = this;
-    console.log(ctx.request.body);
     const { username, password } = ctx.request.body;
     const user = await ctx.model.User.findOne({
       username,
