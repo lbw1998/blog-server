@@ -9,8 +9,9 @@ module.exports = app => {
   const jwt = app.middleware.jwt({ app });
 
   // 用户
-  const { login } = controller.user;
+  const { login, changePass } = controller.user;
   router.post('/user/login', login);
+  router.post('/user/changePass', jwt, changePass);
 
   // 管理员接口(带token)
   // 类型
